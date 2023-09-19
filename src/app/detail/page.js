@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function DetailScreen() {
+export default function Detail() {
   return (
     <div>Detail</div>
   )
