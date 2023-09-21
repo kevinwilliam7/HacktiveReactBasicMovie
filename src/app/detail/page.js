@@ -96,10 +96,6 @@ export default function Detail() {
 											<Link href={{pathname: '/detail', query: val.id}}>
 												<div className="w-44 bg-red-100 relative group max-w-full rounded-lg">
 													<Image className='group-hover:scale-125 group-hover:blur-sm rounded-lg' src={posterPath} width={250} height={250} alt='poster' />
-													<div className='top-0 right-0 group-hover:opacity-100 opacity-0 absolute grid grid-cols-2 bg-gray-500 p-1 rounded-l-md content-center gap-1'>
-														<FaStar className='text-white' size={'16px'}/>
-														<h1 className='text-white text-md font-semibold text-center'>{val.vote_average}</h1>
-													</div>
 													<div className="group-hover:h-full group-hover:opacity-100 absolute top-0 w-full h-0 flex flex-col justify-center items-center hover:bg-transparent opacity-0 duration-500">
 														<FaPlay className='text-orange-400' size={'30px'}/>
 													</div>
