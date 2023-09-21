@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/navbar';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { FaPlay, FaStar, FaTag } from 'react-icons/fa';
+export const dynamic='force-dynamic';
 // import data from '@/assets/json/detail_movies.json';
 // import data1 from '@/assets/json/similar_movies.json';
 import Link from 'next/link';
