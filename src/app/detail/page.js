@@ -15,14 +15,12 @@ export default function Detail(props) {
 	const [similarMovies, setSimilarMovies] = useState([]);
 
 	const fetchDetail = async () => {
-		setDetailMovies(null);
 		const res = await fetch(process.env.API_URL+`/3/movie/${props.searchParams.id}?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
 		const data = await res.json();
 		setDetailMovies(data);
 	}
 
 	const fetchSimilar = async () => {
-		setSimilarMovies([]);
 		const res = await fetch(process.env.API_URL+`/3/movie/${props.searchParams.id}/similar?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
 		const data = await res.json();
 		setSimilarMovies(data.results);
