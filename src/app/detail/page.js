@@ -14,15 +14,16 @@ import Slider from '@/components/movie/slider';
 export default function Detail(props) {
 	const [detailMovies, setDetailMovies] = useState(null);
 	const [similarMovies, setSimilarMovies] = useState([]);
+	console.log(props);
 
 	const fetchDetail = async () => {
-		const res = await fetch(process.env.API_URL+`/3/movie/${props.searchParams.id}?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
+		const res = await fetch(process.env.API_URL+`/3/movie/${'1008042'}?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
 		const data = await res.json();
 		setDetailMovies(data);
 	}
 
 	const fetchSimilar = async () => {
-		const res = await fetch(process.env.API_URL+`/3/movie/${props.searchParams.id}/similar?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
+		const res = await fetch(process.env.API_URL+`/3/movie/${'1008042'}/similar?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
 		const data = await res.json();
 		setSimilarMovies(data.results);
 	}
@@ -31,8 +32,7 @@ export default function Detail(props) {
 		fetchDetail();
 		fetchSimilar();
 	}, []);
-	console.log('ini detail')
-	console.log(props.searchParams)
+
 	return (
 		<div>
 			<Navbar/>

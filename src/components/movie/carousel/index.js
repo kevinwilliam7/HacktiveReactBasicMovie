@@ -5,9 +5,11 @@ import { FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import Skeleton from '@/components/skeleton/card';
+import { useRouter } from 'next/navigation';
 
 export default function Carousel(props) {
 	const movies = props.movies;
+	const router = props.router;
 	return (
 		<div className='max-w-screen-xl items-center mx-auto'>
 		<Swiper slidesPerView={2} autoplay={{delay: 2500, disableOnInteraction: false}} modules={[Autoplay, Pagination]} breakpoints={{ 260: { slidesPerView: 1 }, 640: { slidesPerView: 2 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 2 }, 1280: { slidesPerView: 2 }, 1536: { slidesPerView: 2 }}}>
@@ -24,7 +26,8 @@ export default function Carousel(props) {
 						</div>
 					</Link>
 					</div>
-					<Link href={`/detail?id=${val.id}`}>
+					<button onClick={() => router.push(`/detail?id=${1008042}`)}>test</button>
+					<Link href={`/detail?id=${val.id}`} >
 						<div className='p-2 group group-hover:scale-125'>
 						<h1 className="truncate overflow-hidden text-sm text-gray-900 font-semibold justify-center">{val.title} {' ('+new Date(val.release_date).getFullYear()+')'}</h1>
 						<p className='truncate text-xs text-gray-900 font-normal'>{Date(val.release_date)}</p>

@@ -9,8 +9,10 @@ import 'swiper/css/pagination';
 import Slider from '@/components/movie/slider';
 import Carousel from '@/components/movie/carousel';
 import Listing from '@/components/movie/listing';
+import { useRouter } from 'next/navigation';
 
 export default function HomeScreen() {
+	const router = useRouter();
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [upComingMovies, setUpComingMovies] = useState([]);
 	const [popularMovies, setPopularMovies] = useState([]);
@@ -41,6 +43,8 @@ export default function HomeScreen() {
 		setPopularMovies(data.results);
 	}
 
+	// router.push('detail?id=565770')
+
 	useEffect(() => {
 		fetchTopRatedMovies();
 		fetchPopularMovies();
@@ -48,12 +52,10 @@ export default function HomeScreen() {
 		fetchSearchMovies();
 	}, []);
 
-	console.log('ini home')
-
 	return (
 		<div>
 			<Navbar/>
-			<Carousel movies={upComingMovies}/>
+			<Carousel movies={upComingMovies} router={router}/>
 			<Slider title={'Upcoming Movies'} movies={upComingMovies}/>
 			<Slider title={'Popular Movies'} movies={topRatedMovies}/>
 			<Listing title={'Top Rated Movies'} movies={topRatedMovies}/>
