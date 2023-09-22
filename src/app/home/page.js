@@ -1,12 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import Navbar from '@/components/layout/navbar';
 import { useEffect, useState } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import Slider from '@/components/movie/slider';
 import Carousel from '@/components/movie/carousel';
-import Listing from '@/components/movie/listing';
 
 export default function HomeScreen() {
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -47,7 +43,6 @@ export default function HomeScreen() {
 
 	return (
 		<div>
-			<Navbar/>
 			<Carousel movies={upComingMovies}/>
 			<Slider title={'Now Playing'} movies={nowPlayingMovies}/>
 			<Slider title={'Popular Movies'} movies={popularMovies}/>

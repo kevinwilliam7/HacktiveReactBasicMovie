@@ -5,6 +5,8 @@ import Skeleton from '@/components/skeleton/card';
 import { FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function Carousel(props) {
 	const movies = props.movies;
@@ -32,7 +34,7 @@ export default function Carousel(props) {
 					</Link>
 				</SwiperSlide>
 				}) : <div>
-					<SwiperSlide className='p-2'><Skeleton dimension={'w96 h-96'}/></SwiperSlide>
+					<SwiperSlide className='p-2'><Skeleton dimension={'w-screen h-96'}/></SwiperSlide>
 				</div>
 		}		
 		</Swiper>
