@@ -1,18 +1,13 @@
 'use client'
 import Navbar from '@/components/layout/navbar';
 import { useEffect, useState } from 'react';
-import { FaPlay } from "react-icons/fa";
-import Image from 'next/image';
-import Link from 'next/link';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Slider from '@/components/movie/slider';
 import Carousel from '@/components/movie/carousel';
 import Listing from '@/components/movie/listing';
-import { useRouter } from 'next/navigation';
 
 export default function HomeScreen() {
-	const router = useRouter();
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [upComingMovies, setUpComingMovies] = useState([]);
 	const [popularMovies, setPopularMovies] = useState([]);
@@ -55,7 +50,7 @@ export default function HomeScreen() {
 	return (
 		<div>
 			<Navbar/>
-			<Carousel movies={upComingMovies} router={router}/>
+			<Carousel movies={upComingMovies}/>
 			<Slider title={'Upcoming Movies'} movies={upComingMovies}/>
 			<Slider title={'Popular Movies'} movies={topRatedMovies}/>
 			<Listing title={'Top Rated Movies'} movies={topRatedMovies}/>

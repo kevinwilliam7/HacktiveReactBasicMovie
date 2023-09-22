@@ -2,10 +2,8 @@
 import Navbar from '@/components/layout/navbar';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
-import { FaPlay, FaStar, FaTag } from 'react-icons/fa';
+import { FaPlay, FaStar } from 'react-icons/fa';
 export const dynamic='force-dynamic';
-// import data from '@/assets/json/detail_movies.json';
-// import data1 from '@/assets/json/similar_movies.json';
 import Link from 'next/link';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -14,7 +12,6 @@ import Slider from '@/components/movie/slider';
 export default function Detail(props) {
 	const [detailMovies, setDetailMovies] = useState(null);
 	const [similarMovies, setSimilarMovies] = useState([]);
-	console.log(props);
 
 	const fetchDetail = async () => {
 		const res = await fetch(process.env.API_URL+`/3/movie/${'1008042'}?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
@@ -32,6 +29,7 @@ export default function Detail(props) {
 		fetchDetail();
 		fetchSimilar();
 	}, []);
+	console.log(props);
 
 	return (
 		<div>
