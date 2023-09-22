@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from '@/components/movie/slider';
@@ -9,11 +7,13 @@ import React, { useEffect, useState } from 'react'
 import { FaPlay, FaStar } from 'react-icons/fa';
 import { useSearchParams } from 'next/navigation';
 import Skeleton from '@/components/skeleton/card';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function DetailScreen() {
+	const searchParams = useSearchParams()
 	const [detailMovies, setDetailMovies] = useState(null);
 	const [similarMovies, setSimilarMovies] = useState([]);
-	const searchParams = useSearchParams()
 
 	const fetchDetail = async () => {
 		const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('id')}?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
@@ -30,7 +30,7 @@ export default function DetailScreen() {
 	useEffect(() => {
 		fetchDetail();
 		fetchSimilar();
-	}, [detailMovies, similarMovies]);
+	}, [similarMovies, detailMovies]);
 
 	return (
 		<div>
@@ -96,7 +96,10 @@ export default function DetailScreen() {
 						<Skeleton dimension={'w-screen h-80'}></Skeleton>
 					</div>}
 			</div>
-			<Slider title={'Similar Movies'} movies={similarMovies}/>
+			<div className='max-w-screen-xl items-center mx-auto'>
+				<h1 className='mb-5 font-bold text-2xl'>Similar Movies</h1>
+				<Slider movies={similarMovies}/>
+			</div>
 		</div>
 	)
 } 

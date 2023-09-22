@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import Slider from '@/components/movie/slider';
 import Carousel from '@/components/movie/carousel';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function HomeScreen() {
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -44,9 +46,18 @@ export default function HomeScreen() {
 	return (
 		<div>
 			<Carousel movies={upComingMovies}/>
-			<Slider title={'Now Playing'} movies={nowPlayingMovies}/>
-			<Slider title={'Popular Movies'} movies={popularMovies}/>
-			<Slider title={'Top Rated Movies'} movies={topRatedMovies}/>
+			<div className='max-w-screen-xl items-center mx-auto'>
+				<h1 className='mb-5 font-bold text-2xl'>Now Playing</h1>
+				<Slider movies={nowPlayingMovies}/>
+			</div>
+			<div className='max-w-screen-xl items-center mx-auto'>
+				<h1 className='mb-5 font-bold text-2xl'>Popular Movies</h1>
+				<Slider movies={popularMovies}/>
+			</div>
+			<div className='max-w-screen-xl items-center mx-auto'>
+				<h1 className='mb-5 font-bold text-2xl'>Top Rated Movies</h1>
+				<Slider movies={topRatedMovies}/>
+			</div>
 			{/* <Listing title={'Top Rated Movies'} movies={topRatedMovies}/> */}
 		</div>
 	)
