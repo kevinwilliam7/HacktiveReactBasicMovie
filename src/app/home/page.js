@@ -48,12 +48,14 @@ export default function HomeScreen() {
 		fetchSearchMovies();
 	}, []);
 
+	console.log('ini detail')
+
 	return (
 		<div>
 			<Navbar/>
 			<Carousel movies={upComingMovies}/>
 			<Slider title={'Upcoming Movies'} movies={upComingMovies}/>
-			<Slider title={'Popular Movies'} movies={popularMovies}/>
+			<Slider title={'Popular Movies'} movies={topRatedMovies}/>
 			<Listing title={'Top Rated Movies'} movies={topRatedMovies}/>
 		</div>
 	)
