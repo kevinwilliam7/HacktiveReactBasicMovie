@@ -1,13 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
-import Navbar from '@/components/layout/navbar';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
-import { FaPlay, FaStar } from 'react-icons/fa';
-export const dynamic='force-dynamic';
-import Link from 'next/link';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Image from 'next/image';
+import Link from 'next/link';
 import Slider from '@/components/movie/slider';
+import Navbar from '@/components/layout/navbar';
+import React, { useEffect, useState } from 'react'
+import { FaPlay, FaStar } from 'react-icons/fa';
 import { useSearchParams } from 'next/navigation';
 
 export default function Detail(props) {
@@ -30,7 +30,7 @@ export default function Detail(props) {
 	useEffect(() => {
 		fetchDetail();
 		fetchSimilar();
-	}, []);
+	}, [detailMovies, similarMovies]);
 
 	return (
 		<div>
@@ -93,8 +93,8 @@ export default function Detail(props) {
 						<div className='pt-5 font-normal text-md mb-5'>{detailMovies.overview}</div>
 					</div>
 					: 'null'}
-				<Slider title={'Similar Movies'} movies={similarMovies}/>
 			</div>
+			<Slider title={'Similar Movies'} movies={similarMovies}/>
 		</div>
 	)
 } 

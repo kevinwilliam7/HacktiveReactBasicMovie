@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import Skeleton from '@/components/skeleton/card';
 import { FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import Skeleton from '@/components/skeleton/card';
 
 export default function Carousel(props) {
 	const movies = props.movies;
