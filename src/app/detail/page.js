@@ -32,7 +32,7 @@ export default function Detail(props) {
 		fetchSimilar();
 	}, []);
 	console.log('ini detail')
-	console.log(props)
+	console.log(props.searchParams)
 	return (
 		<div>
 			<Navbar/>
