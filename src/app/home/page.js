@@ -48,7 +48,7 @@ export default function HomeScreen() {
 		fetchSearchMovies();
 	}, []);
 
-	console.log('ini detail')
+	console.log('ini home')
 
 	return (
 		<div>
