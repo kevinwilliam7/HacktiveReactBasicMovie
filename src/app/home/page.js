@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import Navbar from '@/components/layout/navbar';
 import { useEffect, useState } from 'react';
@@ -11,8 +12,7 @@ export default function HomeScreen() {
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [upComingMovies, setUpComingMovies] = useState([]);
 	const [popularMovies, setPopularMovies] = useState([]);
-	const [searchMovies, setSearchMovies] = useState([]);
-	const [searchQuery, setSearchQuery] = useState('');
+	const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
 
 	const fetchTopRatedMovies = async () => {
 		const res = await fetch(`${process.env.API_URL}/3/movie/top_rated?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
@@ -32,28 +32,27 @@ export default function HomeScreen() {
 		setPopularMovies(data.results);
 	}
 
-	const fetchSearchMovies = async () => {
-		const res = await fetch(`${process.env.API_URL}/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
+	const fetchNowPlayingMovies = async () => {
+		const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
 		const data = await res.json();
-		setPopularMovies(data.results);
+		setNowPlayingMovies(data.results);
 	}
-
-	// router.push('detail?id=565770')
 
 	useEffect(() => {
 		fetchTopRatedMovies();
 		fetchPopularMovies();
 		fetchUpComingMovies();
-		fetchSearchMovies();
+		fetchNowPlayingMovies();
 	}, []);
 
 	return (
 		<div>
 			<Navbar/>
 			<Carousel movies={upComingMovies}/>
-			<Slider title={'Upcoming Movies'} movies={upComingMovies}/>
-			<Slider title={'Popular Movies'} movies={topRatedMovies}/>
-			<Listing title={'Top Rated Movies'} movies={topRatedMovies}/>
+			<Slider title={'Now Playing'} movies={nowPlayingMovies}/>
+			<Slider title={'Popular Movies'} movies={popularMovies}/>
+			<Slider title={'Top Rated Movies'} movies={topRatedMovies}/>
+			{/* <Listing title={'Top Rated Movies'} movies={topRatedMovies}/> */}
 		</div>
 	)
 }
