@@ -15,7 +15,7 @@ export default function CategoryScreen() {
 		try{
 			setIsError(null);
 			setIsLoading(true);
-			const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('query')}?language=en-US&page=${pages}`, 
+			const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('type')}?language=en-US&page=${pages}`, 
 				{headers: {Authorization: 'Bearer '+process.env.API_KEY
 			}})
 			const data = await res.json()
@@ -42,7 +42,7 @@ export default function CategoryScreen() {
 	console.log(isError)
 	return (
 		<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-			<h1 className='mb-5 font-bold text-2xl'>{`Search Results Found: ${searchParams.get('query')}`}</h1>
+			<h1 className='mb-5 font-bold text-2xl'>{`${searchParams.get('type')==='now_playing' ? 'Now Playing Movies' : searchParams.get('type')==='popular' ? 'Popular Movies' : 'Top Rated Movies'}`}</h1>
 			{
 				<Listing movies={searchMovies} isLoading={isLoading} isError={isError}/>
 			}

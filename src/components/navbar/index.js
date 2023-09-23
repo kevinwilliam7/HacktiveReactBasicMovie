@@ -57,17 +57,17 @@ export default function Navbar() {
                             <div id="dropdownNavbar" className="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                                 <li>
-                                    <Link href={{ pathname: `/category`, query:`id=${'on_playing'}` }} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <Link href={{ pathname: `/category`, query:`type=${'on_playing'}` }} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         On Playing
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href={{ pathname: `/category`, query:`id=${'popular'}` }} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <Link href={{ pathname: `/category`, query:`type=${'popular'}` }} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         Popular Movies
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href={{ pathname: `/category`, query:`id=${'top_rated'}` }} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <Link href={{ pathname: `/category`, query:`type=${'top_rated'}` }} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         Top Rated Movies
                                     </Link>
                                 </li>
