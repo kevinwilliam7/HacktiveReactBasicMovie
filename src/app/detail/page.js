@@ -6,9 +6,9 @@ import Slider from '@/components/movie/slider';
 import React, { useEffect, useState } from 'react'
 import { FaPlay, FaStar } from 'react-icons/fa';
 import { useSearchParams } from 'next/navigation';
-import Skeleton from '@/components/skeleton/card';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Skeleton from '@/components/movie/card/skeleton';
 
 export default function DetailScreen() {
 	const searchParams = useSearchParams()

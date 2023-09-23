@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import Skeleton from '@/components/skeleton/card';
 import { FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Skeleton from '../card/skeleton';
 
 export default function Carousel(props) {
 	const movies = props.movies;
@@ -19,10 +19,10 @@ export default function Carousel(props) {
 					<div className='group relative max-w-full rounded-lg overflow-hidden'>
 					<Link href={{ pathname: `/detail`, query:`id=${val.id}` }} >
 						<div className="w-full bg-red-100 relative group max-w-full rounded-lg">
-						<Image className='group-hover:scale-125 rounded-lg object-fit h-44 md:h-64 lg:h-72 xl:h-80 w-full' src={"https://image.tmdb.org/t/p/original/"+val.backdrop_path} width={250} height={250} alt='poster' />
-						<div className="group-hover:h-full group-hover:opacity-100 absolute top-0 w-full h-0 flex flex-col justify-center items-center hover:bg-transparent opacity-0 duration-500">
-							<FaPlay className='text-orange-400' size={'30px'}/>
-						</div>
+							<Image className='group-hover:scale-125 rounded-lg object-fit h-44 md:h-64 lg:h-72 xl:h-80 w-full' src={"https://image.tmdb.org/t/p/original/"+val.backdrop_path} width={250} height={250} alt='poster' />
+							<div className="group-hover:h-full group-hover:opacity-100 absolute top-0 w-full h-0 flex flex-col justify-center items-center hover:bg-transparent opacity-0 duration-500">
+								<FaPlay className='text-orange-400' size={'30px'}/>
+							</div>
 						</div>
 					</Link>
 					</div>

@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import Skeleton from '@/components/skeleton/card';
 import { FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import Skeleton from '../card/skeleton';
+import Card from '../card';
 
 export default function Slider(props) {
 	const movies = props.movies;
@@ -15,14 +16,7 @@ export default function Slider(props) {
 			{movies.length !== 0 ? movies.map((val) => {
 				return <SwiperSlide key={val.id} className='p-2'>
 					<div className='group relative max-w-full rounded-lg overflow-hidden'>
-						<Link href={{ pathname: `/detail`, query:`id=${val.id}` }} >
-							<div className="bg-red-100 w-44 h-64 relative group max-w-full rounded-lg">
-								<Image className='group-hover:scale-125 group-hover:blur-sm rounded-lg h-64 w-44' src={`https://image.tmdb.org/t/p/original/${val.poster_path}`} width={250} height={250} alt='poster' />
-								<div className="group-hover:h-full group-hover:opacity-100 absolute top-0 w-full h-0 flex flex-col justify-center items-center hover:bg-transparent opacity-0 duration-500">
-									<FaPlay className='text-orange-400' size={'30px'}/>
-								</div>
-							</div>
-						</Link>
+						<Card dimension={`w-44 h-64`} val={val}/>
 					</div>
 					<Link href={{ pathname: `/detail`, query:`id=${val.id}` }} >
 						<div className='p-2 group group-hover:scale-125'>

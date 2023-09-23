@@ -1,10 +1,8 @@
 'use client'
-import React, { useState } from 'react'
 import {useRouter} from 'next/navigation'
 
 export default function Navbar() {
     const router = useRouter()
-    const [searchQuery, setSearchQuery] = useState('');
 
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -26,8 +24,8 @@ export default function Navbar() {
                             </svg>
                             <span className="sr-only">Search icon</span>
                         </div>
-                        <form onSubmit={()=>router.push(`search?query=${searchQuery}`)}>
-                            <input onChange={(e)=>{setSearchQuery(e.target.value)}} type="text" id="search-navbar" className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."></input>
+                        <form onSubmit={(e)=>{e.preventDefault(); router.push(`search?query=${e.target.searchnavbar.value}`)}}>
+                            <input type="text" name="searchnavbar" id="searchnavbar" className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."></input>
                         </form>
                     </div>
                     <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
