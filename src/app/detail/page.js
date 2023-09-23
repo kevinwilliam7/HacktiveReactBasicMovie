@@ -34,11 +34,11 @@ export default function DetailScreen() {
 
 	return (
 		<div>
-			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
 				{detailMovies!==null 
 					? <div>
-						<div className='max-h-96 group relative max-w-full rounded-lg overflow-hidden mb-5 group cursor-pointer'>
-							<Image className='w-screen max-h-96 object-cover group-hover:scale-110 duration-1000' src={'https://image.tmdb.org/t/p/original'+detailMovies.backdrop_path} width={500} height={500} alt="backdrop_path" />
+						<div className='bg-red-100 max-w-full max-h-96 group relative rounded-lg overflow-hidden mb-5 group cursor-pointer'>
+							<Image className='max-h-96 object-cover group-hover:scale-110 duration-1000' src={'https://image.tmdb.org/t/p/original'+detailMovies.backdrop_path} width={500} height={500} alt="backdrop_path" />
 							<div className="h-full absolute top-0 w-full flex flex-col justify-center items-center">
 								<div className='rounded-full group-hover:bg-opacity-70 w-16 h-16 flex items-center justify-center bg-opacity-0 bg-gray-500'>
 									<FaPlay className='text-orange-400' size={'30px'}/>
@@ -46,8 +46,8 @@ export default function DetailScreen() {
 							</div>
 						</div>
 						<div className='grid grid-cols-12 gap-4'>
-							<div className="bg-red-100 col-span-4 md:col-span-3 sm:col-span-4 lg:col-span-2 xl:col-span-2 w-44 relative group max-w-full rounded-lg">
-								<Image className='rounded-lg w-44' src={'https://image.tmdb.org/t/p/original'+detailMovies.poster_path} width={250} height={250} alt='poster' />
+							<div className="bg-red-100 w-44 h-64 col-span-4 md:col-span-3 sm:col-span-4 lg:col-span-2 xl:col-span-2 relative group max-w-full rounded-lg">
+								<Image className='rounded-lg w-44 h-64' src={'https://image.tmdb.org/t/p/original'+detailMovies.poster_path} width={250} height={250} alt='poster' />
 							</div>
 							<div className='col-span-8 md:col-span-9 sm:col-span-8 lg:col-span-10 xl:col-span-10'>
 								<h1 className='font-bold text-lg sm:text-xl md:text-xl xl:text-xl 2xl:text-2xl mb-2'>{detailMovies.title} {' ('+new Date(detailMovies.release_date).getFullYear()+')'}</h1>

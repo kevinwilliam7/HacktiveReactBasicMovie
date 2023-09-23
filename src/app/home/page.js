@@ -5,6 +5,7 @@ import Slider from '@/components/movie/slider';
 import Carousel from '@/components/movie/carousel';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Skeleton from '@/components/movie/card/skeleton';
 
 export default function HomeScreen() {
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -43,22 +44,34 @@ export default function HomeScreen() {
 		fetchNowPlayingMovies();
 	}, []);
 
+	function renderCarousel(){
+		let items = []
+		for(var i=0; i<2; i++) {
+			items.push(<Skeleton key={i} dimension={'w-screen h-96'}></Skeleton>)
+		}
+		return <div className='grid grid-cols-2 gap-4'>{items}</div>
+	}
+
 	return (
 		<div>
-			<Carousel movies={upComingMovies}/>
 			<div className='max-w-screen-xl items-center mx-auto'>
-				<h1 className='mb-5 font-bold text-2xl'>Now Playing</h1>
-				<Slider movies={nowPlayingMovies}/>
+				{upComingMovies.length!==0 
+					? <Carousel movies={upComingMovies}/> 
+					: renderCarousel()
+				}
 			</div>
 			<div className='max-w-screen-xl items-center mx-auto'>
-				<h1 className='mb-5 font-bold text-2xl'>Popular Movies</h1>
-				<Slider movies={popularMovies}/>
+				<h1 className='p-4 font-bold text-2xl'>Now Playing</h1>
+				<Slider movies={nowPlayingMovies}/> 
 			</div>
 			<div className='max-w-screen-xl items-center mx-auto'>
-				<h1 className='mb-5 font-bold text-2xl'>Top Rated Movies</h1>
-				<Slider movies={topRatedMovies}/>
+				<h1 className='p-4 font-bold text-2xl'>Popular Movies</h1>
+				<Slider movies={popularMovies}/> 
 			</div>
-			{/* <Listing title={'Top Rated Movies'} movies={topRatedMovies}/> */}
+			<div className='max-w-screen-xl items-center mx-auto'>
+				<h1 className='p-4 font-bold text-2xl'>Top Rated Movies</h1>
+				<Slider movies={topRatedMovies}/> 
+			</div>
 		</div>
 	)
 }
