@@ -6,6 +6,7 @@ import Carousel from '@/components/movie/carousel';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Skeleton from '@/components/movie/card/skeleton';
+import Link from 'next/link';
 
 export default function HomeScreen() {
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -61,15 +62,30 @@ export default function HomeScreen() {
 				}
 			</div>
 			<div className='max-w-screen-xl items-center mx-auto'>
-				<h1 className='p-4 font-bold text-2xl'>Now Playing</h1>
+				<div className='grid grid-cols-2 justify-between'>
+					<h1 className='p-4 font-bold text-2xl'>Now Playing</h1>
+					<h1 className='p-4 font-semibold text-lg text-end text-orange-600 hover:orange-blue-900 '>
+						<Link className='bg-orange-100 px-4 py-2 rounded-lg hover:bg-orange-300' href={'/'}>See All</Link>
+					</h1>
+				</div>
 				<Slider movies={nowPlayingMovies}/> 
 			</div>
 			<div className='max-w-screen-xl items-center mx-auto'>
-				<h1 className='p-4 font-bold text-2xl'>Popular Movies</h1>
+			<div className='grid grid-cols-2 justify-between'>
+					<h1 className='p-4 font-bold text-2xl'>Popular Movies</h1>
+					<h1 className='p-4 font-semibold text-lg text-end text-orange-600 hover:orange-blue-900 '>
+						<Link className='bg-orange-100 px-4 py-2 rounded-lg hover:bg-orange-300' href={'/'}>See All</Link>
+					</h1>
+				</div>
 				<Slider movies={popularMovies}/> 
 			</div>
 			<div className='max-w-screen-xl items-center mx-auto'>
-				<h1 className='p-4 font-bold text-2xl'>Top Rated Movies</h1>
+			<div className='grid grid-cols-2 justify-between'>
+					<h1 className='p-4 font-bold text-2xl'>Top Rated Movies</h1>
+					<h1 className='p-4 font-semibold text-lg text-end text-orange-600 hover:orange-blue-900 '>
+						<Link className='bg-orange-100 px-4 py-2 rounded-lg hover:bg-orange-300' href={'/'}>See All</Link>
+					</h1>
+				</div>
 				<Slider movies={topRatedMovies}/> 
 			</div>
 		</div>

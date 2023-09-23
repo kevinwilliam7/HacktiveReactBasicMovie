@@ -22,7 +22,9 @@ export default function DetailScreen() {
 	}
 
 	const fetchSimilar = async () => {
-		const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('id')}/similar?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
+		const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('id')}/similar?language=en-US&page=1`, 
+			{headers: {Authorization: 'Bearer '+process.env.API_KEY}
+		});
 		const data = await res.json();
 		setSimilarMovies(data.results);
 	}
@@ -33,12 +35,12 @@ export default function DetailScreen() {
 	}, [similarMovies, detailMovies]);
 
 	return (
-		<div>
+		<div className='p-4'>
 			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
 				{detailMovies!==null 
 					? <div>
 						<div className='bg-red-100 max-w-full max-h-96 group relative rounded-lg overflow-hidden mb-5 group cursor-pointer'>
-							<Image className='max-h-96 object-cover group-hover:scale-110 duration-1000' src={'https://image.tmdb.org/t/p/original'+detailMovies.backdrop_path} width={500} height={500} alt="backdrop_path" />
+							<Image className='w-full max-h-96 object-cover group-hover:scale-110 duration-1000' src={'https://image.tmdb.org/t/p/original'+detailMovies.backdrop_path} width={500} height={500} alt="backdrop_path" />
 							<div className="h-full absolute top-0 w-full flex flex-col justify-center items-center">
 								<div className='rounded-full group-hover:bg-opacity-70 w-16 h-16 flex items-center justify-center bg-opacity-0 bg-gray-500'>
 									<FaPlay className='text-orange-400' size={'30px'}/>

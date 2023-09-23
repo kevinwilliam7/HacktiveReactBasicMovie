@@ -7,7 +7,7 @@ import Card from '../card';
 
 export default function Slider(props) {
 	const movies = props.movies;
-	function renderSlider(){
+	function renderSliderSkeleton(){
 		let items = []
 		for(var i=0; i<7; i++) {
 			items.push(<Skeleton className="hi" key={i} dimension={'w-screen h-64'}></Skeleton>)
@@ -31,7 +31,7 @@ export default function Slider(props) {
 						</SwiperSlide>
 						})
 					}		
-				</Swiper> : renderSlider()
+				</Swiper> : renderSliderSkeleton()
 			}
 		</>
 	)

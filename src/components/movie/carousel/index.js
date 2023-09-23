@@ -9,7 +9,7 @@ import Card from '../card';
 
 export default function Carousel(props) {
 	const movies = props.movies;
-	function renderCarousel(){
+	function renderCarouselSkeleton(){
 		let items = []
 		for(var i=0; i<2; i++) {
 			items.push(<Skeleton key={i} dimension={'w-screen h-96'}></Skeleton>)
@@ -35,7 +35,7 @@ export default function Carousel(props) {
 							</SwiperSlide>
 						})}		
 					</Swiper>
-				</div> : renderCarousel()
+				</div> : renderCarouselSkeleton()
 			}
 		</>
 	)

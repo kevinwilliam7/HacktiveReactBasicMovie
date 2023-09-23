@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation';
 import Listing from '@/components/movie/listing';
 
-export default function SearchScreen() {
+export default function CategoryScreen() {
 	const searchParams = useSearchParams()
 	const [pages, setPages] = useState(1);
 	const [searchMovies, setSearchMovies] = useState([]);
@@ -15,7 +15,7 @@ export default function SearchScreen() {
 		try{
 			setIsError(null);
 			setIsLoading(true);
-			const res = await fetch(process.env.API_URL+`/3/search/movie?query=${searchParams.get('query')}&include_adult=false&language=en-US&page=${pages}`, 
+			const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('query')}?language=en-US&page=${pages}`, 
 				{headers: {Authorization: 'Bearer '+process.env.API_KEY
 			}})
 			const data = await res.json()
