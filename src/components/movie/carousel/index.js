@@ -1,12 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import { FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Skeleton from '../card/skeleton';
+import Card from '../card';
 
 export default function Carousel(props) {
 	const movies = props.movies;
@@ -16,16 +15,7 @@ export default function Carousel(props) {
 		{
 			movies.length !== 0 ? movies.map((val) => {
 				return <SwiperSlide key={val.id} className='p-2'>
-					<div className='group relative max-w-full rounded-lg overflow-hidden'>
-					<Link href={{ pathname: `/detail`, query:`id=${val.id}` }} >
-						<div className="w-full bg-red-100 relative group max-w-full rounded-lg">
-							<Image className='group-hover:scale-125 rounded-lg object-fit h-44 md:h-64 lg:h-72 xl:h-80 w-full' src={"https://image.tmdb.org/t/p/original/"+val.backdrop_path} width={250} height={250} alt='poster' />
-							<div className="group-hover:h-full group-hover:opacity-100 absolute top-0 w-full h-0 flex flex-col justify-center items-center hover:bg-transparent opacity-0 duration-500">
-								<FaPlay className='text-orange-400' size={'30px'}/>
-							</div>
-						</div>
-					</Link>
-					</div>
+					<Card val={val} size={'large'}/>
 					<Link href={{ pathname: `/detail`, query:`id=${val.id}` }} >
 						<div className='p-2 group group-hover:scale-125'>
 						<h1 className="truncate overflow-hidden text-sm text-gray-900 font-semibold justify-center">{val.title} {' ('+new Date(val.release_date).getFullYear()+')'}</h1>

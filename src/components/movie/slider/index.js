@@ -1,7 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import { FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import Skeleton from '../card/skeleton';
@@ -15,9 +13,7 @@ export default function Slider(props) {
 		}} modules={[Autoplay, Pagination]}>
 			{movies.length !== 0 ? movies.map((val) => {
 				return <SwiperSlide key={val.id} className='p-2'>
-					<div className='group relative max-w-full rounded-lg overflow-hidden'>
-						<Card dimension={`w-44 h-64`} val={val}/>
-					</div>
+					<Card val={val} size={'normal'}/>
 					<Link href={{ pathname: `/detail`, query:`id=${val.id}` }} >
 						<div className='p-2 group group-hover:scale-125'>
 							<h1 className="truncate overflow-hidden text-sm text-gray-900 font-semibold justify-center">{val.title} {' ('+new Date(val.release_date).getFullYear()+')'}</h1>
