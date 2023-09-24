@@ -69,7 +69,7 @@ export default function DetailScreen() {
 											<div className='flex'>
 												{
 													[1,2,3,4,5,6,7,8,9,10].map((val) => {
-														if(val <= parseInt(val.vote_average)) {
+														if(val <= parseInt(detailMovies.vote_average)) {
 															return <div key={val} className='p-1'><FaStar className={'text-yellow-500'}/></div>
 														} else {
 															return <div key={val} className='p-1'><FaStar className={'text-black'}/></div>

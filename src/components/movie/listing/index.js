@@ -15,7 +15,6 @@ export default function Listing(props) {
 		return items
 	}
 
-    console.log(isError)
     return (
         <>
             {movies.length!==0 ?  

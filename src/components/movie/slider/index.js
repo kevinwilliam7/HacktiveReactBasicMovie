@@ -10,7 +10,7 @@ export default function Slider(props) {
 	function renderSliderSkeleton(){
 		let items = []
 		for(var i=0; i<7; i++) {
-			items.push(<Skeleton className="hi" key={i} dimension={'w-screen h-64'}></Skeleton>)
+			items.push(<Skeleton key={i} dimension={'w-screen h-64'}></Skeleton>)
 		}
 		return <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-4'>{items}</div>
 	}
