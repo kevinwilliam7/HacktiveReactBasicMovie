@@ -20,8 +20,10 @@ export default function CategoryScreen() {
 				{headers: {Authorization: 'Bearer '+process.env.API_KEY
 			}})
 			const data = await res.json()
-			setSearchMovies(prevItems => [...prevItems, ...data.results]);
-			setPages(prevPages => prevPages + 1);
+			if(data.results.length!==0) {
+				setSearchMovies(prevItems => [...prevItems, ...data.results]);
+				setPages(prevPages => prevPages + 1);
+			}
 		} catch (err) {
 			setIsError('err');
 		} finally {

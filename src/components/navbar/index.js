@@ -28,8 +28,12 @@ export default function Navbar() {
                             </svg>
                             <span className="sr-only">Search icon</span>
                         </div>
-                        <form onSubmit={(e)=>{e.preventDefault(); router.push(`search?query=${e.target.searchnavbar.value}`);}}>
-                            <input type="text" name="searchnavbar" id="searchnavbar" className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 dark:focus:ring-orange-700 dark:focus:border-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search..."></input>
+                        <form onSubmit={(e)=>{
+                            if(pathname!=='/search') {
+                                e.preventDefault(); router.push(`search?query=${e.target.query.value}`);
+                            }
+                        }}>
+                            <input type="text" name="query" id="query" className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 dark:focus:ring-orange-700 dark:focus:border-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search..."></input>
                         </form>
                     </div>
                     <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:ring-1 focus:border-orange-500 focus:ring-orange-500 dark:focus:border-orange-700 dark:focus:ring-orange-700 dark:text-gray-400 dark:hover:bg-gray-700" aria-controls="navbar-search" aria-expanded="false">
@@ -46,7 +50,10 @@ export default function Navbar() {
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <form onSubmit={(e)=>{e.preventDefault(); router.push(`search?query=${e.target.searchnavbar.value}`)}}>
+                        <form onSubmit={(e)=>{
+                            e.preventDefault(); 
+                            router.push(`search?query=${e.target.searchnavbar.value}`)
+                        }}>
                             <input type="text" name="searchnavbar" id="searchnavbar" className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 dark:focus:ring-orange-700 dark:focus:border-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search..."></input>
                         </form>
                     </div>

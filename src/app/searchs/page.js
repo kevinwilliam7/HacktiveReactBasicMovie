@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation';
 import Listing from '@/components/movie/listing';
 
-export default function SearchScreen() {
+export default function SearchsScreen() {
 	const searchParams = useSearchParams();
 	const queryParam = searchParams.get('query');
 	const [pages, setPages] = useState(1);
@@ -20,10 +20,8 @@ export default function SearchScreen() {
 				{headers: {Authorization: 'Bearer '+process.env.API_KEY
 			}})
 			const data = await res.json()
-			if(data.results.length!==0) {
-				setSearchMovies(prevItems => [...prevItems, ...data.results]);
-				setPages(prevPages => prevPages + pages);
-			}
+			setSearchMovies(prevItems => [...prevItems, ...data.results]);
+			setPages(prevPages => prevPages + pages);
 		} catch (err) {
 			setIsError('err');
 		} finally {

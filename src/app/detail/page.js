@@ -39,7 +39,9 @@ export default function DetailScreen() {
 			{headers: {Authorization: 'Bearer '+process.env.API_KEY}
 		});
 		const data = await res.json();
-		setSimilarMovies(data.results);
+		if(data.results.length!==0) {
+			setSimilarMovies(data.results);
+		}
 	}
 
 	useEffect(() => {
