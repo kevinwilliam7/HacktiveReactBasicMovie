@@ -21,7 +21,7 @@ export default function SearchScreen() {
 			}})
 			const data = await res.json()
 			setSearchMovies(prevItems => [...prevItems, ...data.results]);
-			setPages(prevPages => prevPages + 1);
+			setPages(prevPages => prevPages + pages);
 		} catch (err) {
 			setIsError('err');
 		} finally {
@@ -29,9 +29,9 @@ export default function SearchScreen() {
 		}
 	}
 
-	const handleScroll = () => {
+	const handleScroll = async () => {
 		if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || isLoading) {
-		  return;
+		  	return;
 		}
 		fetchSearchMovies();
 	};
@@ -39,7 +39,9 @@ export default function SearchScreen() {
 	useEffect(()=>{
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
-	}, [isLoading, queryParam]);
+	}, [isLoading, queryParam, searchMovies]);
+
+	console.log(searchMovies)
 	return (
 		<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 			<h1 className='mb-5 font-bold text-2xl'>{`Search Results Found: ${searchParams.get('query')}`}</h1>
