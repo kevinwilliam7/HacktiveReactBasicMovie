@@ -5,7 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import Listing from '@/components/movie/listing';
 
 export default function CategoryScreen() {
-	const searchParams = useSearchParams()
+	const searchParams = useSearchParams();
+	const typeParam = searchParams.get('type');
 	const [pages, setPages] = useState(1);
 	const [searchMovies, setSearchMovies] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +16,7 @@ export default function CategoryScreen() {
 		try{
 			setIsError(null);
 			setIsLoading(true);
-			const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('type')}?language=en-US&page=${pages}`, 
+			const res = await fetch(process.env.API_URL+`/3/movie/${typeParam}?language=en-US&page=${pages}`, 
 				{headers: {Authorization: 'Bearer '+process.env.API_KEY
 			}})
 			const data = await res.json()
@@ -38,7 +39,7 @@ export default function CategoryScreen() {
 	useEffect(()=>{
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
-	}, [isLoading]);
+	}, [isLoading, typeParam, pages]);
 	return (
 		<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 			<h1 className='mb-5 font-bold text-2xl'>{`${searchParams.get('type')==='now_playing' ? 'Now Playing Movies' : searchParams.get('type')==='popular' ? 'Popular Movies' : 'Top Rated Movies'}`}</h1>

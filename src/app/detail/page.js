@@ -11,18 +11,31 @@ import 'swiper/css/pagination';
 import Skeleton from '@/components/movie/card/skeleton';
 
 export default function DetailScreen() {
-	const searchParams = useSearchParams()
+	const searchParams = useSearchParams();
+	const idParam = searchParams.get('id');
 	const [detailMovies, setDetailMovies] = useState(null);
 	const [similarMovies, setSimilarMovies] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [isError, setIsError] = useState(null);
 
 	const fetchDetail = async () => {
-		const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('id')}?language=en-US&page=1`, {headers: {Authorization: 'Bearer '+process.env.API_KEY}});
-		const data = await res.json();
-		setDetailMovies(data);
+		try{
+			setIsError(null);
+			setIsLoading(true);
+			const res = await fetch(process.env.API_URL+`/3/movie/${idParam}?language=en-US&page=1`, 
+				{headers: {Authorization: 'Bearer '+process.env.API_KEY}
+			});
+			const data = await res.json();
+			setDetailMovies(data);
+		} catch (err) {
+			setIsError('err');
+		} finally {
+			setIsLoading(false);
+		}
 	}
 
 	const fetchSimilar = async () => {
-		const res = await fetch(process.env.API_URL+`/3/movie/${searchParams.get('id')}/similar?language=en-US&page=1`, 
+		const res = await fetch(process.env.API_URL+`/3/movie/${idParam}/similar?language=en-US&page=1`, 
 			{headers: {Authorization: 'Bearer '+process.env.API_KEY}
 		});
 		const data = await res.json();
@@ -32,7 +45,7 @@ export default function DetailScreen() {
 	useEffect(() => {
 		fetchDetail();
 		fetchSimilar();
-	}, [similarMovies, detailMovies]);
+	}, [isLoading, idParam]);
 
 	return (
 		<div className='p-4'>
