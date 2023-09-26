@@ -43,6 +43,10 @@ export default function SearchScreen() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [isLoading, queryParam, searchMovies]);
 
+	useEffect(()=>{
+		fetchSearchMovies();
+	}, [])
+
 	console.log(searchMovies)
 	return (
 		<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">

@@ -42,6 +42,11 @@ export default function CategoryScreen() {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [isLoading, typeParam, pages]);
+
+	useEffect(()=>{
+		fetchSearchMovies();
+	}, [])
+
 	return (
 		<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 			<h1 className='mb-5 font-bold text-2xl'>{`${searchParams.get('type')==='now_playing' ? 'Now Playing Movies' : searchParams.get('type')==='popular' ? 'Popular Movies' : 'Top Rated Movies'}`}</h1>
